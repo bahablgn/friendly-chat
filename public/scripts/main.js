@@ -427,7 +427,7 @@ initFirebaseAuth();
 function remoteConfigInit(){
   const remoteConfig = firebase.remoteConfig();
   remoteConfig.settings = {
-    minimumFetchIntervalMillis: 0,
+    minimumFetchIntervalMillis: 3000,
   };
   
   remoteConfig.defaultConfig = ({
