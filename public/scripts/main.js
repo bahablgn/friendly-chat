@@ -427,18 +427,20 @@ initFirebaseAuth();
 function remoteConfigInit(){
   const remoteConfig = firebase.remoteConfig();
   remoteConfig.settings = {
-    minimumFetchIntervalMillis: 3000,
+    minimumFetchIntervalMillis: 3000
   };
   
   remoteConfig.defaultConfig = ({
     'welcome_message2': 'Welcome2',
+    'welcome_message3': 'Welcome2',
+    "portfolio" : {"resume":true,"instagram":false}
   });
   
   async function showRemoteConfig(){
     const resp = await remoteConfig.getAll()
     console.log(resp)
   
-    const awesomeNewFeature = await remoteConfig.getValue('welcome_message2');
+    const awesomeNewFeature = await remoteConfig.getValue('portfolio');
     console.log(awesomeNewFeature)
     if (awesomeNewFeature.getSource() === 'remote') {
       console.log('Parameter value was from the Firebase servers.');
@@ -599,3 +601,5 @@ if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
 
   //ui.start('#firebaseui-auth-container', uiConfig);
 }
+
+remoteConfigInit()
